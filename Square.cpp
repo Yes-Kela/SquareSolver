@@ -1,34 +1,57 @@
-// Решатель квадратных уравнений
-// Пока считаем, что все введённые данные корректные, то есть являются числами
+// Решатель квадратных уравнений.
+// Пока считаем, что все введённые данные корректные, то есть являются числами.
 
 #include <TXLib.h>
 #include <stdio.h>
 #include <math.h>
+#include <ctype.h>
 
-void Enter(double * a, double * b, double * c);
-void LinearSolve(double a, double b, double c);
-void SquareSolve(double a, double b, double c);
+void Enter (double * a, double * b, double * c);       // функция ввода
+int LinearSolver (double b, double c, double * x);            // функция, выводящая решение линейного уравнения
+void SquareSolver (double a, double b, double c);      // функция, выводящая решения квадратки
 
 int main(void)
 {
     printf("Эта программа умеет решать квадратное уравнение вида ax^2 + bx + c = 0.\n\n");
 
-    double kf_a, kf_b, kf_c;
-    Enter(&kf_a, &kf_b, &kf_c);        // передали адреса переменных в функцию, дальше функция считала значения с клавиатуры
+    double kf_a = 0, kf_b = 0, kf_c = 0;
+    Enter (&kf_a, &kf_b, &kf_c);
+
+    while (isdigit(kf_a) == 0 || isdigit(kf_b) == 0 || isdigit(kf_c) == 0)
+    {
+        printf("Некорректно введены данные. Введите ЧИСЛОВЫЕ значения коэффициентов снова.\n");
+        Enter (&kf_a, &kf_b, &kf_c);
+    }
 
     if (kf_a == 0)
     {
-        LinearSolve(kf_a, kf_b, kf_c);
+        printf("\nПри a = 0 квадратное уравнение преобразуется к линейному.\n");
+        double root_x = 0;
+        int count_Roots = LinearSolver(kf_b, kf_c, &root_x);
+        switch (count_Roots)
+        {
+        case -1:
+            printf("И, кстати, данное линейное уравнение имеет решениями всякое действительное число.\n");
+            break;
+        case 0:
+            printf("И, кстати, данное линейное уравнение не имеет решений в действительных числах.\n");
+            break;
+        case 1:
+            printf("И, кстати, данное линейное уравнение имеет единственное решение x = %g.\n", root_x);
+            break;
+        default:
+            printf("main(): ERROR: count_Roots = %d", count_Roots);
+            return 1;
+        }
     }
     else
-    {
-        SquareSolve(kf_a, kf_b, kf_c);
-    }
+        SquareSolver(kf_a, kf_b, kf_c);
+
     return 0;
 }
 
 
-void Enter(double * a, double * b, double * c)
+void Enter (double * a, double * b, double * c)
 {
     printf("Введите значение коэффициента a: ");
     scanf("%lf", a);
@@ -38,19 +61,19 @@ void Enter(double * a, double * b, double * c)
     scanf("%lf", c);
 }
 
-void LinearSolve(double a, double b, double c)
+int LinearSolver (double b, double c, double * x)
 {
-    printf("\nПри a = 0 квадратное уравнение преобразуется к линейному.\n");
     if (b == 0 && c == 0)
-        printf("И, кстати, данное линейное уравнение имеет решениями всякое действительное число.\n");
+        return -1;
     if (b == 0 and c != 0)
-        printf("И, кстати, данное линейное уравнение не имеет решений в действительных числах.\n");
+        return 0;
     else
-        printf("И, кстати, данное линейное уравнение имеет единственное решение x = %g.\n", -c / b);
+        * x = - c / b;
+        return 1;
 }
 
 
-void SquareSolve(double a, double b, double c)
+void SquareSolver (double a, double b, double c)
 {
     double common = -b / (2 * a);
     double discriminant = b*b - 4*a*c;
