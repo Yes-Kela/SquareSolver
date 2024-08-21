@@ -4,10 +4,12 @@
 #include <stdio.h>
 #include <math.h>
 
-void Input (double * a, double * b, double * c, int * returned_a, int * returned_b, int * returned_c);
-void Interaction (double * a, double * b, double * c);
-int EquationSolver (double a, double b, double c, double * x1, double * x2);
 int compare_double (double first, double second);
+void Input (double* a, double* b, double* c, int* returned_a, int* returned_b, int* returned_c);
+void Interaction (double* a, double* b, double* c);
+int EquationSolver (double a, double b, double c, double* x1, double* x2);
+int Linear (double b, double c, double* x1);
+int Square (double a, double b, double c, double* x1, double* x2);
 void Output (double x1, double x2, int Roots_count);
 
 int main(void)
@@ -21,17 +23,6 @@ int main(void)
     return 0;
 }
 
-
-void Input (double * a, double * b, double * c, int * returned_a, int * returned_b, int * returned_c)
-{
-    printf("Введите значение коэффициента a: ");
-    * returned_a = scanf("%lf", a);
-    printf("Введите значение коэффициента b: ");
-    * returned_b = scanf("%lf", b);
-    printf("Введите значение коэффициента c: ");
-    * returned_c = scanf("%lf", c);
-}
-
 int compare_double (double first, double second)
 {
     const double epsilon = 1e-12;
@@ -41,57 +32,71 @@ int compare_double (double first, double second)
         return 0;
 }
 
-int EquationSolver(double a, double b, double c, double * x1, double * x2)
+void Input (double* a, double* b, double* c, int* returned_a, int* returned_b, int* returned_c)
 {
-    int a_is_0 = compare_double(a, 0), b_is_0 = compare_double(b, 0), c_is_0 = compare_double(c, 0);
-
-    if (a_is_0)
-    {
-        if (b_is_0 && c_is_0)
-            return -1;
-        else if (b_is_0 && (c_is_0 == 0))
-            return 0;
-        else
-        {
-            * x1 = -c / b;
-            return 1;
-        }
-    }
-    else
-    {
-        double common = -b / (2*a);
-        double discriminant = b*b - 4*a*c;
-
-        if (discriminant < 0)
-            return 0;
-        else if (compare_double(discriminant, 0))
-        {
-            * x1 = common;
-            return 1;
-        }
-        else
-        {
-            double sqrt_discr_div_2a = sqrt(discriminant) / (2*a);
-            * x1 = common - sqrt_discr_div_2a;
-            * x2 = common + sqrt_discr_div_2a;
-            return 2;
-        }
-    }
-
+    printf("Введите значение коэффициента a: ");
+    * returned_a = scanf("%lf", a);
+    printf("Введите значение коэффициента b: ");
+    * returned_b = scanf("%lf", b);
+    printf("Введите значение коэффициента c: ");
+    * returned_c = scanf("%lf", c);
 }
 
-void Interaction(double * a, double * b, double * c)
+void Interaction (double* a, double* b, double* c)
 {
     int returned_a = 0, returned_b = 0, returned_c = 0;
     Input (a, b, c, &returned_a, &returned_b, &returned_c);
     while (returned_a != 1 || returned_b != 1 || returned_c != 1)
     {
-        printf("Введены некорректные данные. Введите значения коэффициентов заново.\n");
+        printf("\nВведены некорректные данные. Введите значения коэффициентов заново.\n");
         Input(a, b, c, &returned_a, &returned_b, &returned_c);
     }
 }
 
-void Output(double x1, double x2, int Roots_count)
+int EquationSolver (double a, double b, double c, double* x1, double* x2)
+{
+    int a_is_0 = compare_double(a, 0);
+
+    if (a_is_0)
+        return Linear (b, c, x1);
+    else
+        return Square (a, b, c, x1, x2);
+}
+
+int Linear (double b, double c, double* x1)
+{
+    int  b_is_0 = compare_double(b, 0), c_is_0 = compare_double(c, 0);
+    if (b_is_0 && c_is_0)
+        return -1;
+    else if (b_is_0 && !c_is_0)
+        return 0;
+    else
+        * x1 = -c / b;
+        return 1;
+}
+
+int Square (double a, double b, double c, double* x1, double* x2)
+{
+    double common = -b / (2*a);
+    double discriminant = b*b - 4*a*c;
+
+    if (discriminant < 0)
+        return 0;
+    else if (compare_double(discriminant, 0))
+    {
+        * x1 = common;
+        return 1;
+    }
+    else
+    {
+        double sqrt_discr_div_2a = sqrt(discriminant) / (2*a);
+        * x1 = common - sqrt_discr_div_2a;
+        * x2 = common + sqrt_discr_div_2a;
+        return 2;
+    }
+}
+
+void Output (double x1, double x2, int Roots_count)
 {
     switch(Roots_count)
     {
@@ -112,4 +117,3 @@ void Output(double x1, double x2, int Roots_count)
             printf("# ERROR: Roots_count = %d\n", Roots_count);
     }
 }
-
