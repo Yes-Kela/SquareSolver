@@ -5,8 +5,7 @@
 #include <math.h>
 
 int compare_double (double first, double second);
-void Input (double* a, double* b, double* c, int* returned_a, int* returned_b, int* returned_c);
-void Interaction (double* a, double* b, double* c);
+void Input (double* kf);
 int EquationSolver (double a, double b, double c, double* x1, double* x2);
 int Linear (double b, double c, double* x1);
 int Square (double a, double b, double c, double* x1, double* x2);
@@ -15,10 +14,13 @@ void Output (double x1, double x2, int Roots_count);
 int main(void)
 {
     printf("Эта программа умеет решать квадратное уравнение вида ax^2 + bx + c = 0.\n\n");
-    double kf_a = 0, kf_b = 0, kf_c = 0;
-    Interaction (&kf_a, &kf_b, &kf_c);
+    double cf_a = 0, cf_b = 0, cf_c = 0;
+    printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+    Input (&cf_a);
+    Input (&cf_b);
+    Input (&cf_c);
     double x1 = 0, x2 = 0;
-    int Roots_count = EquationSolver (kf_a, kf_b, kf_c, &x1, &x2);
+    int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
     Output(x1, x2, Roots_count);
     return 0;
 }
@@ -32,25 +34,18 @@ int compare_double (double first, double second)
         return 0;
 }
 
-void Input (double* a, double* b, double* c, int* returned_a, int* returned_b, int* returned_c)
+void Input (double* cf)
 {
-    printf("Введите значение коэффициента a: ");
-    * returned_a = scanf("%lf", a);
-    printf("Введите значение коэффициента b: ");
-    * returned_b = scanf("%lf", b);
-    printf("Введите значение коэффициента c: ");
-    * returned_c = scanf("%lf", c);
-}
-
-void Interaction (double* a, double* b, double* c)
-{
-    int returned_a = 0, returned_b = 0, returned_c = 0;
-    Input (a, b, c, &returned_a, &returned_b, &returned_c);
-    while (returned_a != 1 || returned_b != 1 || returned_c != 1)
+    printf("Введите значение коэффициента: ");
+    int returned_cf = scanf("%lf", cf);
+    while (returned_cf != 1)
     {
-        printf("\nВведены некорректные данные. Введите значения коэффициентов заново.\n");
-        Input(a, b, c, &returned_a, &returned_b, &returned_c);
+        int ch = 0;
+        while ((ch = getchar()) != '\n')
+            printf("Введены некорректные данные.\nВведите значение коэффициента заново: ");
+        returned_cf = scanf("%lf", cf);
     }
+
 }
 
 int EquationSolver (double a, double b, double c, double* x1, double* x2)
@@ -117,3 +112,5 @@ void Output (double x1, double x2, int Roots_count)
             printf("# ERROR: Roots_count = %d\n", Roots_count);
     }
 }
+
+
