@@ -10,6 +10,7 @@ int EquationSolver (double a, double b, double c, double* x1, double* x2);
 int Linear (double b, double c, double* x1);
 int Square (double a, double b, double c, double* x1, double* x2);
 void Output (double x1, double x2, int Roots_count);
+// int RunAllTests(int Test_count, double a, double b, double c, double x1_ideal, double x2_ideal, double Roots_count_ideal);
 
 int main(void)
 {
@@ -22,6 +23,7 @@ int main(void)
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
     Output(x1, x2, Roots_count);
+    // printf(RunAllTests(1, 1, 0, -4, -2, 2, 2));
     return 0;
 }
 
@@ -36,16 +38,14 @@ int compare_double (double first, double second)
 
 void Input (double* cf)
 {
-    printf("¬ведите значение коэффициента: ");
-    int returned_cf = scanf("%lf", cf);
-    while (returned_cf != 1)
-    {
-        int ch = 0;
-        while ((ch = getchar()) != '\n')
-            printf("¬ведены некорректные данные.\n¬ведите значение коэффициента заново: ");
-        returned_cf = scanf("%lf", cf);
-    }
+    int ch = 0;
 
+    while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+    {
+        while ((ch = getchar()) != '\n'){ ; }
+
+        printf("¬ведены некорректные данные.\n¬ведите значение коэффициента заново: ");
+    }
 }
 
 int EquationSolver (double a, double b, double c, double* x1, double* x2)
@@ -114,3 +114,20 @@ void Output (double x1, double x2, int Roots_count)
 }
 
 
+// ёнит-тестирование
+/*
+int RunAllTests (int Test_count, double a, double b, double c, double x1_ideal, double x2_ideal, int Roots_count_ideal)
+{
+    double x1, x2;
+    int Roots_count = EquationSolver(a, b, c, &x1, &x2);
+    if (Roots_count != Roots_count_ideal || x1 != x1_ideal; || x2 != x2_ideal)
+    {
+        printf("# ERROR Test %d, a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
+               "Expected: x1 = %lg, x2 = %lg, Roots_count = %lg\n",
+               Test_count, a, b, c, Roots_count, x1, x2,
+               x1_ideal, x2_ideal, Roots_count_ideal);
+    }
+    return Test_count;
+}
+
+*/
