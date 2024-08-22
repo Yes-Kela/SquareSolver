@@ -1,0 +1,7 @@
+#include <stdio.h>
+int main(void)
+{
+    char string[] = "1 2 3 4 5 6"; 
+    sscanf(string, "%lg %lg %lg", &a, &b, &c);
+    
+}
