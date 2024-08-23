@@ -23,6 +23,8 @@ int Square (double a, double b, double c, double* x1, double* x2);
 void Output (double x1, double x2, int Roots_count);
 void RunAllTests (TEST test[], int nTests);
 void RunTest (TEST data);
+void ShowError (TEST data, double x1, double x2, int Roots_count);
+void ShowSuccess (TEST data, double x1, double x2, int Roots_count);
 
 
 int main(void)
@@ -80,6 +82,7 @@ void Input (double* cf)
 {
     int ch = 0;
     int returned_cf = scanf("%lf", cf);
+    assert (* cf != NAN);
     while (returned_cf != 1 || (ch = getchar()) != '\n')
     {
         while ((ch = getchar()) != '\n'){ ; }
@@ -179,41 +182,20 @@ void RunTest (TEST data)
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver(data.a, data.b, data.c, &x1, &x2);
 
+    // Переделать!
     if ((isnan(x1) || isnan(x2)) && Roots_count == data.Roots_count_ideal)
-        switch (Roots_count)
-        {
-            case -1:
-                printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
-                break;
-            case 0:
-                printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
-                break;
-            case 1:
-                if ((isnan(x1) && isnan(data.x1_ideal)) || (isnan(x2)) && isnan(data.x2_ideal))
-                    printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
-                else
-                    printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
-                           "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                            data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
-                            data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
-                break;
-            default:
-                printf("# ERROR: Roots_count = %d\n", Roots_count);
-        }
-    else
     {
-        if (Roots_count != data.Roots_count_ideal || !equal_double(x1, data.x1_ideal) || !equal_double(x2, data.x2_ideal))
-            printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
-                   "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
-                    data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
+        if (isnan(x1) && isnan(x2) && (Roots_count == -1 || Roots_count == 0))
+            ShowSuccess(data, x1, x2, Roots_count);
+        else if (Roots_count == 1 && x1 == data.x1_ideal && isnan(x2))
+            ShowSuccess(data, x1, x2, Roots_count);
         else
-            printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
+            ShowError(data, x1, x2, Roots_count);
     }
+    else if (Roots_count == data.Roots_count_ideal && x1 == data.x1_ideal && x2 == data.x2_ideal)
+        ShowSuccess(data, x1, x2, Roots_count);
+    else
+        ShowError(data, x1, x2, Roots_count);
 }
 
 void RunAllTests (TEST test[], int nTests)
@@ -221,4 +203,19 @@ void RunAllTests (TEST test[], int nTests)
     printf("\n");
     for (int i = 0; i < nTests; i++)
         RunTest (test[i]);
+}
+
+
+void ShowError (TEST data, double x1, double x2, int Roots_count)
+{
+    printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
+            data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
+}
+
+void ShowSuccess (TEST data, double x1, double x2, int Roots_count)
+{
+    printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
+           "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
+            data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
+            data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
 }
