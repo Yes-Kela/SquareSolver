@@ -3,6 +3,7 @@
 #include <TXLib.h>
 #include <stdio.h>
 #include <math.h>
+#include <assert.h>
 #define SHOWTESTS
 
 struct TEST
@@ -61,6 +62,10 @@ int equal_double (double first, double second)
 
 void MainInput (double* cf_a, double* cf_b, double* cf_c)
 {
+    assert (cf_a != NULL);
+    assert (cf_b != NULL);
+    assert (cf_c != NULL);
+
     printf("Коэффициент a: ");
     Input(cf_a);
     printf("Коэффициент b: ");
@@ -72,18 +77,21 @@ void MainInput (double* cf_a, double* cf_b, double* cf_c)
 void Input (double* cf)
 {
     int ch = 0;
-
-    while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+    int returned_cf = scanf("%lf", cf);
+    while (returned_cf != 1 || (ch = getchar()) != '\n')
     {
         while ((ch = getchar()) != '\n'){ ; }
         printf("Введены некорректные данные.\nВведите значение коэффициента заново: ");
+        returned_cf = scanf("%lf", cf);
     }
 }
 
 int EquationSolver (double a, double b, double c, double* x1, double* x2)
 {
-    int a_is_0 = equal_double(a, 0);
+    assert (x1 != NULL);
+    assert (x2 != NULL);
 
+    int a_is_0 = equal_double(a, 0);
     if (a_is_0)
         return Linear (b, c, x1, x2);
     else
@@ -99,6 +107,7 @@ int Linear (double b, double c, double* x1, double* x2)
         return 0;
     else
     {
+        assert (x1 != NULL);
         * x1 = * x2 = -c / b;
         return 1;
     }
@@ -108,7 +117,8 @@ int Square (double a, double b, double c, double* x1, double* x2)
 {
     double common = -b / (2*a);
     double discriminant = b*b - 4*a*c;
-
+    assert (x1 != NULL);
+    assert (x2 != NULL);
     if (discriminant < 0)
         return 0;
     else if (equal_double(discriminant, 0))

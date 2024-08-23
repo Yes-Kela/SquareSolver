@@ -547,3 +547,1163 @@ Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
 Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2E24 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C44F in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (76):
+
+     74:     int ch = 0;
+     75: 
+=>   76:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     77:     {
+     78:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C3DE in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (65):
+
+     63: {
+     64:     printf("Коэффициент a: ");
+=>   65:     Input(NULL);
+     66:     printf("Коэффициент b: ");
+     67:     Input(cf_b);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     double x1 = 0, x2 = 0;
+     46:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:19:06, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:19:09
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2E24 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C44F in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (76):
+
+     74:     int ch = 0;
+     75: 
+=>   76:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     77:     {
+     78:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C3DE in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (65):
+
+     63: {
+     64:     printf("Коэффициент a: ");
+=>   65:     Input(NULL);
+     66:     printf("Коэффициент b: ");
+     67:     Input(cf_b);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     double x1 = 0, x2 = 0;
+     46:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:19:06, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:19:09
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x25D4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C57F in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79: 
+=>   80:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     81:     {
+     82:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C3F7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (67):
+
+     65:     Input(cf_a);
+     66:     printf("Коэффициент b: ");
+=>   67:     Input(NULL);
+     68:     printf("Коэффициент c: ");
+     69:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     double x1 = 0, x2 = 0;
+     46:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:40:11, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:40:15
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x25D4 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C57F in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79: 
+=>   80:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     81:     {
+     82:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C3F7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (67):
+
+     65:     Input(cf_a);
+     66:     printf("Коэффициент b: ");
+=>   67:     Input(NULL);
+     68:     printf("Коэффициент c: ");
+     69:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     double x1 = 0, x2 = 0;
+     46:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:40:11, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:40:15
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x14C0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C70E in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (83):
+
+     81:     int ch = 0;
+     82: 
+=>   83:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     84:     {
+     85:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C586 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (70):
+
+     68:     Input(cf_a);
+     69:     printf("Коэффициент b: ");
+=>   70:     Input(NULL);
+     71:     printf("Коэффициент c: ");
+     72:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     assert (cf_a != NULL);
+     46:     assert (cf_b != NULL);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:42:17, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:42:21
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x14C0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C70E in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (83):
+
+     81:     int ch = 0;
+     82: 
+=>   83:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     84:     {
+     85:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C586 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (70):
+
+     68:     Input(cf_a);
+     69:     printf("Коэффициент b: ");
+=>   70:     Input(NULL);
+     71:     printf("Коэффициент c: ");
+     72:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (44):
+
+     42:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     43:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   44:     MainInput(&cf_a, &cf_b, &cf_c);
+     45:     assert (cf_a != NULL);
+     46:     assert (cf_b != NULL);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:42:17, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:42:21
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2380 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C4B5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79: 
+=>   80:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     81:     {
+     82:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:45:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:45:10
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2380 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C4B5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79: 
+=>   80:     while (scanf("%lf", cf) != 1 || (ch = getchar()) != '\n')
+     81:     {
+     82:         while ((ch = getchar()) != '\n'){ ; }
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 14:45:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 14:45:10
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2A4C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C494 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     int returned_cf = scanf("%lf", cf);
+     80:     assert (cf != NULL);
+     81:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:04:19, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:04:22
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2A4C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C494 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     int returned_cf = scanf("%lf", cf);
+     80:     assert (cf != NULL);
+     81:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:04:19, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:04:23
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1E08 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00411881 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: (anonymous namespace)::TX::_txOnSignal() at c:/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x767672B1 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x7676B76B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x767680EA in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0042C4A3 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     assert (cf != NULL);
+     80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:04:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:04:56
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x29C0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00411881 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: (anonymous namespace)::TX::_txOnSignal() at c:/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x767672B1 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x7676B76B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x767680EA in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0042C4A3 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     assert (cf != NULL);
+     80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:05:11, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:05:15
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1DFC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C494 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79:     //assert (cf != NULL);
+=>   80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+     82:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:05:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:05:56
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1DFC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C494 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (80):
+
+     78:     int ch = 0;
+     79:     //assert (cf != NULL);
+=>   80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+     82:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:05:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:05:56
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2420 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00411881 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: (anonymous namespace)::TX::_txOnSignal() at c:/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x767672B1 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x7676B76B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x767680EA in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0042C4A3 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     assert (cf != NULL);
+     80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+
+# 5 0x0042C417 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:06:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:06:13
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1138 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00411881 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: (anonymous namespace)::TX::_txOnSignal() at c:/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x767672B1 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x7676B76B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x767680EA in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0042C43D in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (79):
+
+     77: {
+     78:     int ch = 0;
+=>   79:     assert (cf != NULL);
+     80:     int returned_cf = scanf("%lf", cf);
+     81:     assert (cf != NULL);
+
+# 5 0x0042C3F5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (69):
+
+     67:     //assert (cf_a != NULL);
+     68:     printf("Коэффициент b: ");
+=>   69:     Input(NULL);
+     70:     //assert (cf_b != NULL);
+     71:     printf("Коэффициент c: ");
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:06:46, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:06:49
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2A60 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C42E in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (76):
+
+     74: {
+     75:     int ch = 0;
+=>   76:     int returned_cf = scanf("%lf", cf);
+     77:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+     78:     {
+
+# 5 0x0042C3F5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (68):
+
+     66:     Input(cf_a);
+     67:     printf("Коэффициент b: ");
+=>   68:     Input(NULL);
+     69:     printf("Коэффициент c: ");
+     70:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:16:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:16:10
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x767A2C57 в функции $I10_OUTPUT(). Попытка записать данные по адресу NULL в модуле C:\Windows\System32\msvcrt.dll. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x2A60 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x767A2C57 in C:\Windows\System32\msvcrt.dll: $I10_OUTPUT()
+# 1 0x7679024E in C:\Windows\System32\msvcrt.dll: ungetwc()
+# 2 0x76785357 in C:\Windows\System32\msvcrt.dll: scanf()
+# 3 0x767852F8 in C:\Windows\System32\msvcrt.dll: scanf()
+
+# 4 0x0042C42E in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: Input() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (76):
+
+     74: {
+     75:     int ch = 0;
+=>   76:     int returned_cf = scanf("%lf", cf);
+     77:     while (returned_cf != 1 || (ch = getchar()) != '\n')
+     78:     {
+
+# 5 0x0042C3F5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (68):
+
+     66:     Input(cf_a);
+     67:     printf("Коэффициент b: ");
+=>   68:     Input(NULL);
+     69:     printf("Коэффициент c: ");
+     70:     Input(cf_c);
+
+# 6 0x0042C2D7 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(&cf_a, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:16:07, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:16:10
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x150 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00411881 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: (anonymous namespace)::TX::_txOnSignal() at c:/codeblocks/mingw/include/txlib.h (11078)
+# 1 0x767672B1 in C:\Windows\System32\msvcrt.dll: raise()
+# 2 0x7676B76B in C:\Windows\System32\msvcrt.dll: abort()
+# 3 0x767680EA in C:\Windows\System32\msvcrt.dll: assert()
+
+# 4 0x0042C3E5 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: MainInput() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (65):
+
+     63: void MainInput (double* cf_a, double* cf_b, double* cf_c)
+     64: {
+=>   65:     assert (cf_a != NULL);
+     66:     printf("Коэффициент a: ");
+     67:     Input(cf_a);
+
+# 5 0x0042C2D4 in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (45):
+
+     43:     double cf_a = 0, cf_b = 0, cf_c = 0;
+     44:     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+=>   45:     MainInput(NULL, &cf_b, &cf_c);
+     46:     double x1 = 0, x2 = 0;
+     47:     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 15:42:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 15:42:48
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
