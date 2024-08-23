@@ -27,18 +27,20 @@ void RunTest (TEST data);
 
 int main(void)
 {
-    const int nTests = 7;
+    const int nTests = 10;
     TEST test[nTests] =
     {
-    {.Test_count = 1, .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,      .x2_ideal = 7,  .Roots_count_ideal = 2},
-    {.Test_count = 2, .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,   .x2_ideal = 1,  .Roots_count_ideal = 2},
-    {.Test_count = 3, .a = 0,      .b = 0,      .c = 0,      .x1_ideal = 0,      .x2_ideal = 0,  .Roots_count_ideal = -1},
-    {.Test_count = 4, .a = 1,      .b = 0,      .c = 5,      .x1_ideal = 0,      .x2_ideal = 0,  .Roots_count_ideal = 0},
-    {.Test_count = 5, .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,      .x2_ideal = 3,  .Roots_count_ideal = 1},
-    {.Test_count = 6, .a = 0.0001, .b = 1.2345, .c = 1.2344, .x1_ideal = -12344, .x2_ideal = -1, .Roots_count_ideal = 2},
-    {.Test_count = 7, .a = 0.05,   .b = 0.09,   .c = -0.14,  .x1_ideal = -2.8,   .x2_ideal = 1,  .Roots_count_ideal = 2}
+    {.Test_count = 1,  .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,              .x2_ideal = 7,      .Roots_count_ideal = 2},
+    {.Test_count = 2,  .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
+    {.Test_count = 3,  .a = 0,      .b = 0,      .c = 0,      .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = -1},
+    {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
+    {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = NAN,      .Roots_count_ideal = 1},
+    {.Test_count = 6,  .a = 0.0001, .b = 1.2345, .c = 1.2344, .x1_ideal = -12344,         .x2_ideal = -1,     .Roots_count_ideal = 2},
+    {.Test_count = 7,  .a = 0.05,   .b = 0.09,   .c = -0.14,  .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
+    {.Test_count = 8,  .a = -15,    .b = 0,      .c = -2,     .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
+    {.Test_count = 9,  .a = 3,      .b = 4,      .c = -4,     .x1_ideal = -2,             .x2_ideal = 2.0/3,  .Roots_count_ideal = 2},
+    {.Test_count = 10, .a = 3.44,   .b = 1008,   .c = 0,      .x1_ideal = -1008.0/3.44,   .x2_ideal = 0,      .Roots_count_ideal = 2}
     };
-
     printf("Эта программа умеет решать квадратное уравнение вида ax^2 + bx + c = 0.\n\n");
     double cf_a = 0, cf_b = 0, cf_c = 0;
     printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
@@ -62,32 +64,37 @@ int equal_double (double first, double second)
 
 void MainInput (double* cf_a, double* cf_b, double* cf_c)
 {
-    printf("Коэффициент a: ");
+    assert (cf_a != NULL);
+    assert (cf_b != NULL);
+    assert (cf_c != NULL);
+
+    printf("Коэффициент a (введите число и нажмите <Enter>): ");
     Input(cf_a);
-    printf("Коэффициент b: ");
-    Input(NULL);
-    printf("Коэффициент c: ");
+    printf("Коэффициент b (введите число и нажмите <Enter>): ");
+    Input(cf_b);
+    printf("Коэффициент c (введите число и нажмите <Enter>): ");
     Input(cf_c);
 }
 
 void Input (double* cf)
 {
     int ch = 0;
-    assert (cf != NULL);
     int returned_cf = scanf("%lf", cf);
-    assert (cf != NULL);
     while (returned_cf != 1 || (ch = getchar()) != '\n')
     {
         while ((ch = getchar()) != '\n'){ ; }
-        printf("Введены некорректные данные.\nВведите значение коэффициента заново: ");
+        printf("\nВведены некорректные данные (возможно, Вы воспользовались пробелом или другим недопустимым символом)."
+               "\nВведите значение коэффициента заново: ");
         returned_cf = scanf("%lf", cf);
     }
 }
 
 int EquationSolver (double a, double b, double c, double* x1, double* x2)
 {
-    int a_is_0 = equal_double(a, 0);
+    assert (x1 != NULL);
+    assert (x2 != NULL);
 
+    int a_is_0 = equal_double(a, 0);
     if (a_is_0)
         return Linear (b, c, x1, x2);
     else
@@ -98,12 +105,19 @@ int Linear (double b, double c, double* x1, double* x2)
 {
     int  b_is_0 = equal_double(b, 0), c_is_0 = equal_double(c, 0);
     if (b_is_0 && c_is_0)
+    {
+        * x1 = * x2 = NAN;
         return -1;
+    }
     else if (b_is_0 && !c_is_0)
+    {
+        * x1 = * x2 = NAN;
         return 0;
+    }
     else
     {
-        * x1 = * x2 = -c / b;
+        * x1 = -c / b;
+        * x2 = NAN;
         return 1;
     }
 }
@@ -112,12 +126,17 @@ int Square (double a, double b, double c, double* x1, double* x2)
 {
     double common = -b / (2*a);
     double discriminant = b*b - 4*a*c;
-
+    assert (x1 != NULL);
+    assert (x2 != NULL);
     if (discriminant < 0)
+    {
+        * x1 = * x2 =  NAN;
         return 0;
+    }
     else if (equal_double(discriminant, 0))
     {
-        * x1 = * x2 = common;
+        * x1 = common;
+        * x2 = NAN;
         return 1;
     }
     else
@@ -131,6 +150,7 @@ int Square (double a, double b, double c, double* x1, double* x2)
 
 void Output (double x1, double x2, int Roots_count)
 {
+    printf("\n");
     switch(Roots_count)
     {
         case -1:
@@ -158,22 +178,47 @@ void RunTest (TEST data)
 {
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver(data.a, data.b, data.c, &x1, &x2);
-
-    if (Roots_count != data.Roots_count_ideal || !equal_double(x1, data.x1_ideal) || !equal_double(x2, data.x2_ideal))
-        printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
-               "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
-                data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
-                data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
-    else
-        printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
+    
+    if ((isnan(x1) || isnan(x2)) && Roots_count == data.Roots_count_ideal):
+        switch (Roots_count)
+        {
+            case -1: 
+                printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
                 data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
-
-    //return data.Test_count;
+                break;
+            case 0:  
+                printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
+                data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
+                break;
+            case 1:  
+                if ((isnan(x1) && isnan(data.x1_ideal)) || (isnan(x2)) && isnan(data.x2_ideal))
+                    printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
+                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
+                else
+                    printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
+                           "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
+                            data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
+                            data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
+                break;
+            default:
+                printf("# ERROR: Roots_count = %d\n", Roots_count);
+        }
+    else
+    {
+        if (Roots_count != data.Roots_count_ideal || !equal_double(x1, data.x1_ideal) || !equal_double(x2, data.x2_ideal))
+            printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
+                   "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
+                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2,
+                    data.Roots_count_ideal, data.x1_ideal, data.x2_ideal);
+        else
+            printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
+                    data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
+    }
 }
-
 
 void RunAllTests (TEST test[], int nTests)
 {
+    printf("\n");
     for (int i = 0; i < nTests; i++)
         RunTest (test[i]);
 }

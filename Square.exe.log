@@ -1707,3 +1707,85 @@ Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
 Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: Деление на ноль при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x0042C4EA в функции main() в файле C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp на строке 43 в модуле C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1B3C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042C4EA in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (35):
+
+     33:     {.Test_count = 1,  .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,              .x2_ideal = 7,      .Roots_count_ideal = 2},
+     34:     {.Test_count = 2,  .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
+=>   35:     {.Test_count = 3,  .a = 5.0 / 0,      .b = 0,      .c = 0,      .x1_ideal = 0,              .x2_ideal = 0,      .Roots_count_ideal = -1},
+     36:     {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = 0,              .x2_ideal = 0,      .Roots_count_ideal = 0},
+     37:     {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = 3,      .Roots_count_ideal = 1},
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 18:53:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 18:53:23
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe,
+
+ВНЕЗАПНО: signal (8, 0x00): SIGFPE: Грубая ошибка в вычислениях. 
+
+Деление на ноль при операции с плавающей точкой.
+
+#1: Исключение EXCEPTION_FLT_DIVIDE_BY_ZERO (0xC000008E) при выполнении кода по адресу 0x0042C4EA в функции main() в файле C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp на строке 43 в модуле C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x005072FC (32-bit), Flags: Cmdre0, Thread: 0x1B3C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0042C4EA in C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe: main() at C:/Users/Алексей/Documents/GitHub/SquareSolver/Square.cpp (35):
+
+     33:     {.Test_count = 1,  .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,              .x2_ideal = 7,      .Roots_count_ideal = 2},
+     34:     {.Test_count = 2,  .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
+=>   35:     {.Test_count = 3,  .a = 5.0 / 0,      .b = 0,      .c = 0,      .x1_ideal = 0,              .x2_ideal = 0,      .Roots_count_ideal = -1},
+     36:     {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = 0,              .x2_ideal = 0,      .Roots_count_ideal = 0},
+     37:     {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = 3,      .Roots_count_ideal = 1},
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\mingw\include\txlib.h
+Compiled:	Aug 23 2024 18:53:20, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Aug 23 2024 18:53:23
+
+Run file:	C:\Users\Алексей\Documents\GitHub\SquareSolver\Square.exe
+Directory:	C:\Users\Алексей\Documents\GitHub\SquareSolver
+
+--------------------------------------------------
