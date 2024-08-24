@@ -175,24 +175,17 @@ void Output (double x1, double x2, int Roots_count)
 }
 
 
-// Юнит-тестирование
+// Юнит-тестирование. Разобраться с RunAllTests()!!!
 
 void RunTest (TEST data)
 {
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver(data.a, data.b, data.c, &x1, &x2);
+    int coincidence_Roots_count = (Roots_count == data.Roots_count_ideal);
+    int coincidence_x1 = (isnan(x1) && isnan(data.x1_ideal) || equal_double (x1, data.x1_ideal));
+    int coincidence_x2 = (isnan(x2) && isnan(data.x2_ideal) || equal_double (x2, data.x2_ideal));
 
-    // Переделать!
-    if ((isnan(x1) || isnan(x2)) && Roots_count == data.Roots_count_ideal)
-    {
-        if (isnan(x1) && isnan(x2) && (Roots_count == -1 || Roots_count == 0))
-            ShowSuccess(data, x1, x2, Roots_count);
-        else if (Roots_count == 1 && x1 == data.x1_ideal && isnan(x2))
-            ShowSuccess(data, x1, x2, Roots_count);
-        else
-            ShowError(data, x1, x2, Roots_count);
-    }
-    else if (Roots_count == data.Roots_count_ideal && x1 == data.x1_ideal && x2 == data.x2_ideal)
+    if (coincidence_Roots_count && coincidence_x1 && coincidence_x2)
         ShowSuccess(data, x1, x2, Roots_count);
     else
         ShowError(data, x1, x2, Roots_count);
@@ -206,13 +199,13 @@ void RunAllTests (TEST test[], int nTests)
 }
 
 
-void ShowError (TEST data, double x1, double x2, int Roots_count)
+void ShowSuccess (TEST data, double x1, double x2, int Roots_count)
 {
     printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
             data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
 }
 
-void ShowSuccess (TEST data, double x1, double x2, int Roots_count)
+void ShowError (TEST data, double x1, double x2, int Roots_count)
 {
     printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
            "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
