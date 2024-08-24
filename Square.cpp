@@ -1,6 +1,5 @@
 // Решатель квадратных уравнений
 
-#include <TXLib.h>
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
@@ -13,6 +12,8 @@ struct TEST
     double x1_ideal, x2_ideal;
     int Roots_count_ideal;
 };
+
+enum solutions {INF_ROOTS = -1, NO_ROOTS, ONE_ROOT, TWO_ROOTS};
 
 int equal_double (double first, double second);
 void MainInput (double* cf_a, double* cf_b, double* cf_c);
@@ -43,9 +44,9 @@ int main(void)
     {.Test_count = 9,  .a = 3,      .b = 4,      .c = -4,     .x1_ideal = -2,             .x2_ideal = 2.0/3,  .Roots_count_ideal = 2},
     {.Test_count = 10, .a = 3.44,   .b = 1008,   .c = 0,      .x1_ideal = -1008.0/3.44,   .x2_ideal = 0,      .Roots_count_ideal = 2}
     };
-    printf("Эта программа умеет решать квадратное уравнение вида ax^2 + bx + c = 0.\n\n");
+    printf("This program can solve quadratic equation of the form ax^2 + bx + c = 0.\n\n");
     double cf_a = 0, cf_b = 0, cf_c = 0;
-    printf("Введите значения коэффициентов a, b и c в этом порядке.\n");
+    printf("Enter the values of the coefficients a, b and c.\n");
     MainInput(&cf_a, &cf_b, &cf_c);
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
@@ -70,11 +71,11 @@ void MainInput (double* cf_a, double* cf_b, double* cf_c)
     assert (cf_b != NULL);
     assert (cf_c != NULL);
 
-    printf("Коэффициент a (введите число и нажмите <Enter>): ");
+    printf("Coefficient a (press <Enter> after inputting a number): ");
     Input(cf_a);
-    printf("Коэффициент b (введите число и нажмите <Enter>): ");
+    printf("Coefficient b (press <Enter> after inputting a number): ");
     Input(cf_b);
-    printf("Коэффициент c (введите число и нажмите <Enter>): ");
+    printf("Coefficient c (press <Enter> after inputting a number): ");
     Input(cf_c);
 }
 
@@ -86,8 +87,8 @@ void Input (double* cf)
     while (returned_cf != 1 || (ch = getchar()) != '\n')
     {
         while ((ch = getchar()) != '\n'){ ; }
-        printf("\nВведены некорректные данные (возможно, Вы воспользовались пробелом или другим недопустимым символом)."
-               "\nВведите значение коэффициента заново: ");
+        printf("\nIncorrect data has been entered (perhaps, you used gap or other unacceptable characters)."
+               "\nEnter it again: ");
         returned_cf = scanf("%lf", cf);
     }
 }
@@ -110,18 +111,18 @@ int Linear (double b, double c, double* x1, double* x2)
     if (b_is_0 && c_is_0)
     {
         * x1 = * x2 = NAN;
-        return -1;
+        return INF_ROOTS;
     }
     else if (b_is_0 && !c_is_0)
     {
         * x1 = * x2 = NAN;
-        return 0;
+        return NO_ROOTS;
     }
     else
     {
         * x1 = -c / b;
         * x2 = NAN;
-        return 1;
+        return ONE_ROOT;
     }
 }
 
@@ -134,20 +135,20 @@ int Square (double a, double b, double c, double* x1, double* x2)
     if (discriminant < 0)
     {
         * x1 = * x2 =  NAN;
-        return 0;
+        return NO_ROOTS;
     }
     else if (equal_double(discriminant, 0))
     {
         * x1 = common;
         * x2 = NAN;
-        return 1;
+        return ONE_ROOT;
     }
     else
     {
         double sqrt_discr_div_2a = sqrt(discriminant) / (2*a);
         * x1 = common - sqrt_discr_div_2a;
         * x2 = common + sqrt_discr_div_2a;
-        return 2;
+        return TWO_ROOTS;
     }
 }
 
@@ -156,17 +157,17 @@ void Output (double x1, double x2, int Roots_count)
     printf("\n");
     switch(Roots_count)
     {
-        case -1:
-            printf("Решением данного уравнения является любое действительное число.\n");
+        case INF_ROOTS:
+            printf("Any real number is the solution to this equation.\n");
             break;
-        case 0:
-            printf("Данное уравнение корней не имеет.\n");
+        case NO_ROOTS:
+            printf("This equation has no solutions in real numbers.\n");
             break;
-        case 1:
-            printf("Данное уравнение имеет единственный корень х = %lg.\n", x1);
+        case ONE_ROOT:
+            printf("This equation has only one solution in real numbers: х = %lg.\n", x1);
             break;
-        case 2:
-            printf("Данное уравнение имеет два решения в действительных числах:\n"
+        case TWO_ROOTS:
+            printf("This equation has two solutions in real numbers:\n"
                    "x1 = %lg\n" "x2 = %lg\n", x1, x2);
             break;
         default:
@@ -175,15 +176,15 @@ void Output (double x1, double x2, int Roots_count)
 }
 
 
-// Юнит-тестирование. Разобраться с RunAllTests()!!!
+// Юнит-тестирование
 
 void RunTest (TEST data)
 {
     double x1 = 0, x2 = 0;
     int Roots_count = EquationSolver(data.a, data.b, data.c, &x1, &x2);
     int coincidence_Roots_count = (Roots_count == data.Roots_count_ideal);
-    int coincidence_x1 = (isnan(x1) && isnan(data.x1_ideal) || equal_double (x1, data.x1_ideal));
-    int coincidence_x2 = (isnan(x2) && isnan(data.x2_ideal) || equal_double (x2, data.x2_ideal));
+    int coincidence_x1 = ((isnan(x1) && isnan(data.x1_ideal)) || equal_double (x1, data.x1_ideal));
+    int coincidence_x2 = ((isnan(x2) && isnan(data.x2_ideal)) || equal_double (x2, data.x2_ideal));
 
     if (coincidence_Roots_count && coincidence_x1 && coincidence_x2)
         ShowSuccess(data, x1, x2, Roots_count);
