@@ -1,9 +1,10 @@
-// Решатель квадратных уравнений
+// Solver quadratic equation
 
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#define SHOWTESTS
+#include <string.h>
+//#define SHOWTESTS
 
 struct TEST
 {
@@ -28,7 +29,7 @@ void ShowError (TEST data, double x1, double x2, int Roots_count);
 void ShowSuccess (TEST data, double x1, double x2, int Roots_count);
 
 
-int main(void)
+int main(int argc, char* argv[])
 {
     const int nTests = 10;
     TEST test[nTests] =
@@ -36,21 +37,40 @@ int main(void)
     {.Test_count = 1,  .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,              .x2_ideal = 7,      .Roots_count_ideal = 2},
     {.Test_count = 2,  .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
     {.Test_count = 3,  .a = 0,      .b = 0,      .c = 0,      .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = -1},
-    {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
-    {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = NAN,      .Roots_count_ideal = 1},
+    {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = 0},
+    {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = NAN,    .Roots_count_ideal = 1},
     {.Test_count = 6,  .a = 0.0001, .b = 1.2345, .c = 1.2344, .x1_ideal = -12344,         .x2_ideal = -1,     .Roots_count_ideal = 2},
     {.Test_count = 7,  .a = 0.05,   .b = 0.09,   .c = -0.14,  .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
-    {.Test_count = 8,  .a = -15,    .b = 0,      .c = -2,     .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
+    {.Test_count = 8,  .a = -15,    .b = 0,      .c = -2,     .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = 0},
     {.Test_count = 9,  .a = 3,      .b = 4,      .c = -4,     .x1_ideal = -2,             .x2_ideal = 2.0/3,  .Roots_count_ideal = 2},
     {.Test_count = 10, .a = 3.44,   .b = 1008,   .c = 0,      .x1_ideal = -1008.0/3.44,   .x2_ideal = 0,      .Roots_count_ideal = 2}
     };
-    printf("This program can solve quadratic equation of the form ax^2 + bx + c = 0.\n\n");
-    double cf_a = 0, cf_b = 0, cf_c = 0;
-    printf("Enter the values of the coefficients a, b and c.\n");
-    MainInput(&cf_a, &cf_b, &cf_c);
-    double x1 = 0, x2 = 0;
-    int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
-    Output(x1, x2, Roots_count);
+
+    if (argc <= 1)
+    {
+        printf("Syntax: \n\t%s --solve for solving quadratic equation"
+               "\n\t%s --test  for running tests\n", argv[0], argv[0]);
+        return 0;
+    }
+    else if (!strcmp(argv[1], "--solve"))
+    {
+        printf("This program can solve quadratic equation of the form ax^2 + bx + c = 0.\n\n");
+        double cf_a = 0, cf_b = 0, cf_c = 0;
+        printf("Enter the values of the coefficients a, b and c.\n");
+        MainInput(&cf_a, &cf_b, &cf_c);
+        double x1 = 0, x2 = 0;
+        int Roots_count = EquationSolver (cf_a, cf_b, cf_c, &x1, &x2);
+        Output(x1, x2, Roots_count);
+    }
+    else if (!strcmp(argv[1], "--test"))
+    {
+        printf("\n");
+        RunAllTests(test, nTests);
+    }
+    else
+        printf("Unknown parameter: '%s'.\n"
+               "Type %s --solve for solving quadratic equation.\n"
+               "type %s --test  for running tests.\n", argv[1], argv[0]);
 
     #ifdef SHOWTESTS
         printf("\n");

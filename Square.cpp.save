@@ -36,11 +36,11 @@ int main(void)
     {.Test_count = 1,  .a = 1,      .b = -12,    .c = 35,     .x1_ideal = 5,              .x2_ideal = 7,      .Roots_count_ideal = 2},
     {.Test_count = 2,  .a = 5,      .b = 9,      .c = -14,    .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
     {.Test_count = 3,  .a = 0,      .b = 0,      .c = 0,      .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = -1},
-    {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
-    {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = NAN,      .Roots_count_ideal = 1},
+    {.Test_count = 4,  .a = 1,      .b = 0,      .c = 5,      .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = 0},
+    {.Test_count = 5,  .a = 0,      .b = 2,      .c = -6,     .x1_ideal = 3,              .x2_ideal = NAN,    .Roots_count_ideal = 1},
     {.Test_count = 6,  .a = 0.0001, .b = 1.2345, .c = 1.2344, .x1_ideal = -12344,         .x2_ideal = -1,     .Roots_count_ideal = 2},
     {.Test_count = 7,  .a = 0.05,   .b = 0.09,   .c = -0.14,  .x1_ideal = -2.8,           .x2_ideal = 1,      .Roots_count_ideal = 2},
-    {.Test_count = 8,  .a = -15,    .b = 0,      .c = -2,     .x1_ideal = NAN,              .x2_ideal = NAN,      .Roots_count_ideal = 0},
+    {.Test_count = 8,  .a = -15,    .b = 0,      .c = -2,     .x1_ideal = NAN,            .x2_ideal = NAN,    .Roots_count_ideal = 0},
     {.Test_count = 9,  .a = 3,      .b = 4,      .c = -4,     .x1_ideal = -2,             .x2_ideal = 2.0/3,  .Roots_count_ideal = 2},
     {.Test_count = 10, .a = 3.44,   .b = 1008,   .c = 0,      .x1_ideal = -1008.0/3.44,   .x2_ideal = 0,      .Roots_count_ideal = 2}
     };
@@ -53,6 +53,7 @@ int main(void)
     Output(x1, x2, Roots_count);
 
     #ifdef SHOWTESTS
+        printf("\n");
         RunAllTests(test, nTests);
     #endif
 
@@ -111,18 +112,18 @@ int Linear (double b, double c, double* x1, double* x2)
     if (b_is_0 && c_is_0)
     {
         * x1 = * x2 = NAN;
-        return INF_ROO;
+        return INF_ROOTS;
     }
     else if (b_is_0 && !c_is_0)
     {
         * x1 = * x2 = NAN;
-        return 0;
+        return NO_ROOTS;
     }
     else
     {
         * x1 = -c / b;
         * x2 = NAN;
-        return 1;
+        return ONE_ROOT;
     }
 }
 
@@ -135,24 +136,24 @@ int Square (double a, double b, double c, double* x1, double* x2)
     if (discriminant < 0)
     {
         * x1 = * x2 =  NAN;
-        return 0;
+        return NO_ROOTS;
     }
     else if (equal_double(discriminant, 0))
     {
         * x1 = common;
         * x2 = NAN;
-        return 1;
+        return ONE_ROOT;
     }
     else
     {
         double sqrt_discr_div_2a = sqrt(discriminant) / (2*a);
         * x1 = common - sqrt_discr_div_2a;
         * x2 = common + sqrt_discr_div_2a;
-        return 2;
+        return TWO_ROOTS;
     }
 }
 
-void Output (double x1, double x2, solutions Roots_count)
+void Output (double x1, double x2, int Roots_count)
 {
     printf("\n");
     switch(Roots_count)
@@ -194,19 +195,18 @@ void RunTest (TEST data)
 
 void RunAllTests (TEST test[], int nTests)
 {
-    printf("\n");
     for (int i = 0; i < nTests; i++)
         RunTest (test[i]);
 }
 
 
-void ShowSuccess (TEST data, double x1, double x2, solutions Roots_count)
+void ShowSuccess (TEST data, double x1, double x2, int Roots_count)
 {
     printf("# SUCCESS: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n",
             data.Test_count, data.a, data.b, data.c, Roots_count, x1, x2);
 }
 
-void ShowError (TEST data, double x1, double x2, solutions Roots_count)
+void ShowError (TEST data, double x1, double x2, int Roots_count)
 {
     printf("# ERROR: Test %d: a = %lg, b = %lg, c = %lg, Roots_count = %d, x1 = %lg, x2 = %lg\n"
            "  Expected: Roots_count = %d, x1 = %lg, x2 = %lg\n",
