@@ -53,6 +53,7 @@ int main(void)
     Output(x1, x2, Roots_count);
 
     #ifdef SHOWTESTS
+        printf("\n");
         RunAllTests(test, nTests);
     #endif
 
@@ -194,7 +195,6 @@ void RunTest (TEST data)
 
 void RunAllTests (TEST test[], int nTests)
 {
-    printf("\n");
     for (int i = 0; i < nTests; i++)
         RunTest (test[i]);
 }
