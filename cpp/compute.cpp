@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "compute.h"
 
 int equal_double (double first, double second)
 {

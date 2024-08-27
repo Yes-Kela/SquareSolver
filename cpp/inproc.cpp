@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "inproc.h"
 
 void MainInput (double* cf_a, double* cf_b, double* cf_c)
 {

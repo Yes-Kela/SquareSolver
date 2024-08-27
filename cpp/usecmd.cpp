@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "usecmd.h"
 
 void ShowSyntax (char arg0[])
 {
@@ -23,9 +23,9 @@ void basic_solving (void)
     Output(x1, x2, Roots_count);
 }
 
-void ShowIncorrect(char arg0[], char arg1[])
+void ShowIncorrect(char arg0[])
 {
     printf("Unknown parameter: '%s'.\n"
            "Type %s --solve for solving quadratic equation.\n"
-           "type %s --test  for running tests.\n", arg1, arg0);
+           "type %s --test  for running tests.\n", arg0, arg0, arg0);
 }

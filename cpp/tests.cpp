@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "tests.h"
 
 void RunTest (TEST data)
 {

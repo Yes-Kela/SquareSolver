@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "usesq.h"
 
 int main(int argc, char* argv[])
 {
@@ -24,16 +24,21 @@ int main(int argc, char* argv[])
     };
 
     if (argc <= 1)
+    {
         ShowSyntax(argv[0]);
+    }
     else if (!strcmp(argv[1], "--solve"))
+    {
         basic_solving();
+    }
     else if (!strcmp(argv[1], "--test"))
     {
         printf("\n");
         RunAllTests(test, nTests);
     }
     else
-        ShowIncorrect(argv[0], argv[1]);
-
+    {
+        ShowIncorrect(argv[0]);
+    }
     return 0;
 }

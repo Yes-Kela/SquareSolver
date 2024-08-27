@@ -1,4 +1,6 @@
 // Header file "declaration.h"
+#ifndef DECLAR_H
+#define DECLAR_H
 
 struct TEST
 {
@@ -24,4 +26,6 @@ void ShowSuccess (TEST data, double x1, double x2, int Roots_count);
 
 void ShowSyntax (char arg0[]);
 void basic_solving (void);
-void ShowIncorrect (char arg0[], char arg1[]);
+void ShowIncorrect (char arg1[]);
+
+#endif

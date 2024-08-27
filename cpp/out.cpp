@@ -4,7 +4,7 @@
 #include <math.h>
 #include <assert.h>
 #include <string.h>
-#include "declar.h"
+#include "out.h"
 
 void Output (double x1, double x2, int Roots_count)
 {
