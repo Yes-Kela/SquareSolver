@@ -1,9 +1,8 @@
 // Control module "usesq.cpp"
 
 #include <stdio.h>
-#include <math.h>
-#include <assert.h>
 #include <string.h>
+#include <math.h>
 #include "usesq.h"
 
 int main(int argc, char* argv[])

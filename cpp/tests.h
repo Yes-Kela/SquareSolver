@@ -1,5 +1,8 @@
 // "tests.h" - header for "tests.cpp"
 
+#ifndef TESTS_H
+#define TESTS_H
+
 struct TEST
 {
     int Test_count;
@@ -16,3 +19,6 @@ void RunTest (TEST data);
 void ShowError (TEST data, double x1, double x2, int Roots_count);
 void ShowSuccess (TEST data, double x1, double x2, int Roots_count);
 int EquationSolver (double a, double b, double c, double* x1, double* x2);
+
+
+#endif /* TESTS_H */

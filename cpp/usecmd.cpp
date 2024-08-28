@@ -1,8 +1,6 @@
 // File that is responsible for interaction with console "usecmd.cpp"
 
 #include <stdio.h>
-#include <math.h>
-#include <assert.h>
 #include <string.h>
 #include "usecmd.h"
 

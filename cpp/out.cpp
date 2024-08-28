@@ -1,9 +1,6 @@
 // Output file "out.cpp"
 
 #include <stdio.h>
-#include <math.h>
-#include <assert.h>
-#include <string.h>
 #include "out.h"
 
 void Output (double x1, double x2, int Roots_count)

@@ -1,4 +1,6 @@
 // "compute.h" - header for "compute.cpp"
+#ifndef COMPUTE_H
+#define COMPUTE_H
 
 struct TEST
 {
@@ -14,3 +16,6 @@ int equal_double (double first, double second);
 int EquationSolver (double a, double b, double c, double* x1, double* x2);
 int Linear (double b, double c, double* x1, double* x2);
 int Square (double a, double b, double c, double* x1, double* x2);
+
+
+#endif  /* COMPUTE_H */

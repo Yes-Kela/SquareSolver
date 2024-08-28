@@ -1,9 +1,8 @@
 // Calculating file "compute.cpp"
 
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 #include <assert.h>
-#include <string.h>
 #include "compute.h"
 
 int equal_double (double first, double second)

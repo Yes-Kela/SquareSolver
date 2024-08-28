@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#include <string.h>
 #include "inproc.h"
 
 void MainInput (double* cf_a, double* cf_b, double* cf_c)
